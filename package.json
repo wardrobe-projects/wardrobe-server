@@ -1,0 +1,31 @@
+{
+  "name": "wardrobe-server",
+  "version": "1.0.0",
+  "description": "wardrobe server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wardrobe-projects/wardrobe-server.git"
+  },
+  "author": "kmmdong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wardrobe-projects/wardrobe-server/issues"
+  },
+  "homepage": "https://github.com/wardrobe-projects/wardrobe-server#readme",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-convert": "^1.2.0",
+    "koa-logger": "^3.0.1",
+    "koa-res": "^1.3.0",
+    "koa-router": "^7.2.1",
+    "mongodb": "^2.2.30",
+    "mongoose": "^4.11.1",
+    "nodemon": "^1.11.0",
+    "q": "^1.5.0"
+  }
+}
