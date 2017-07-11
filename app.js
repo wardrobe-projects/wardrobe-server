@@ -10,10 +10,16 @@ const user = require('./controllers/userController')
 
 const app = new koa();
 
+const session = require('koa-session')
+app.keys = ['wardrobe']
+app.use(session({}, app))
 
-//Mongoose Config
 
-mongoose.promise = require('q');
+const passport = require('./auth/auth'); 
+app.use(passport.initialize())
+app.use(passport.session())
+
+mongoose.promise = global.promise;
 
 mongoose.connect('mongodb://127.0.0.1:27017/wardrobe')
         .then((res) => {
@@ -28,5 +34,12 @@ app.use(bodyParser());
 app.use(convert(koaRes()));
 
 app.use(route.post('/signup', user.createUser))
+
+app.use(route.post('/signin',
+  passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/signup'
+  })
+))
 
 app.listen(3000);
