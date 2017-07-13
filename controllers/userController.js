@@ -21,8 +21,9 @@ exports.createUser = async (ctx) => {
 exports.fetchUser = async (username, password) => {
   try {
     let user = await User.findOne({ username });
+    console.log('user',user)
     return user
     } catch (err) {
-      return { error: 'error'}
+      return { error: 'error' }
     }
-}
+};

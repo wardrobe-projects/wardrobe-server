@@ -13,16 +13,18 @@ passport.deserializeUser(async function(id, done) {
   } catch(err) {
     done(err)
   }
-})
+});
 
 const LocalStrategy = require('passport-local').Strategy
-passport.use(new LocalStrategy(function(username, password, done) {
+passport.use(new LocalStrategy({
+  session: true
+}, function(username, password, done) {
   fetchUser(username)
     .then(user => {
       if (username === user.username && bcrypt.compareSync(password, user.password)) {
-        console.log('true')
+       return done(null, user)
       } else {
-        done(null, false)
+        done(null, false, {error : 'Not Login'})
       }
     })
     .catch(err => done(err))
